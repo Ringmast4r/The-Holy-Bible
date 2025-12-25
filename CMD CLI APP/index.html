@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bible CMD Reader - Web Terminal</title>
+    <link rel="stylesheet" href="css/terminal.css">
+</head>
+<body>
+    <div class="terminal-container">
+        <!-- Terminal Header -->
+        <div class="terminal-header">
+            <div class="header-title">
+                <span class="cross">✟</span> BIBLE ANALYSIS TOOL <span class="cross">✟</span>
+            </div>
+            <div class="header-subtitle">Explore Scripture with Cross-References</div>
+            <div class="header-author">Created by <a href="https://github.com/Ringmast4r" target="_blank">@Ringmast4r</a></div>
+            <div class="header-translation">Translation: <span id="current-translation">KJV</span> - King James Version (1611) | Theme: <span id="current-theme">Vibrant</span> (Press 't' to change)</div>
+        </div>
+
+        <!-- Terminal Output -->
+        <div class="terminal-output" id="terminal-output">
+            <!-- Welcome message will be inserted here by JavaScript -->
+        </div>
+
+        <!-- Terminal Input -->
+        <div class="terminal-input-line">
+            <span class="prompt">⊳ Enter your choice:</span>
+            <input type="text" id="terminal-input" class="terminal-input" autocomplete="off" spellcheck="false" autofocus>
+        </div>
+
+        <!-- Loading Indicator -->
+        <div class="loading-indicator" id="loading-indicator">
+            <div class="loading-spinner">⚙️</div>
+            <div class="loading-text">Loading Bible data<span class="loading-dots">...</span></div>
+            <div class="loading-subtext">Loading 4 translations and 340,000+ cross-references...</div>
+            <div style="margin-top: 15px; color: var(--gray); font-size: 0.85rem;">
+                <div>▓▓▓▓▓▓▓▓▓▓░░░░░░░░░░</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="js/bible-data.js"></script>
+    <script src="js/commands.js"></script>
+    <script src="js/terminal.js"></script>
+</body>
+</html>

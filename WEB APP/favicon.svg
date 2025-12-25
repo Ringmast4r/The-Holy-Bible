@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+  <!-- Dark background circle -->
+  <circle cx="16" cy="16" r="16" fill="#1a1a2e"/>
+
+  <!-- Celtic Cross in Gold -->
+  <g fill="#FFD700" stroke="#FFD700">
+    <!-- Outer circle ring -->
+    <circle cx="16" cy="16" r="7" fill="none" stroke-width="1.2"/>
+
+    <!-- Vertical beam -->
+    <rect x="14.2" y="5" width="3.6" height="22" rx="0.5"/>
+
+    <!-- Horizontal beam -->
+    <rect x="5" y="14.2" width="22" height="3.6" rx="0.5"/>
+
+    <!-- Center knot - simplified trinity pattern -->
+    <circle cx="16" cy="16" r="2.2" fill="none" stroke-width="1"/>
+
+    <!-- Decorative knots on beams -->
+    <!-- Top knot -->
+    <path d="M 14.5 7 L 15.5 8 L 16.5 7 L 17.5 8 L 16 9 L 14.5 8 Z" opacity="0.4" stroke="none"/>
+
+    <!-- Bottom knot -->
+    <path d="M 14.5 25 L 15.5 24 L 16.5 25 L 17.5 24 L 16 23 L 14.5 24 Z" opacity="0.4" stroke="none"/>
+
+    <!-- Left knot -->
+    <path d="M 7 14.5 L 8 15.5 L 7 16.5 L 8 17.5 L 9 16 L 8 14.5 Z" opacity="0.4" stroke="none"/>
+
+    <!-- Right knot -->
+    <path d="M 25 14.5 L 24 15.5 L 25 16.5 L 24 17.5 L 23 16 L 24 14.5 Z" opacity="0.4" stroke="none"/>
+  </g>
+</svg>

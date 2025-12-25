@@ -1,0 +1,16 @@
+<svg width="192" height="192" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="192" height="192" fill="#1a1a2e"/>
+
+  <!-- Gold border -->
+  <rect x="10" y="10" width="172" height="172" fill="none" stroke="#FFD700" stroke-width="4" rx="20"/>
+
+  <!-- Cross symbol -->
+  <g transform="translate(96, 96)">
+    <rect x="-8" y="-50" width="16" height="100" fill="#FFD700" rx="4"/>
+    <rect x="-40" y="-8" width="80" height="16" fill="#FFD700" rx="4"/>
+  </g>
+
+  <!-- Bible text -->
+  <text x="96" y="155" font-family="Arial, sans-serif" font-size="18" font-weight="bold" fill="#00CED1" text-anchor="middle">BIBLE VIZ</text>
+</svg>

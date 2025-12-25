@@ -1,0 +1,77 @@
+═══════════════════════════════════════════════════════════════
+  CELTIC HERALDRY ULTIMATE - QUICK START GUIDE
+═══════════════════════════════════════════════════════════════
+
+🎨 YOU'RE RIGHT! The TUI was breaking the colors!
+
+I've created COLORFUL TERMINAL VERSIONS that preserve all the
+beautiful GREEN shamrocks, Celtic crosses, and RED Hand art!
+
+═══════════════════════════════════════════════════════════════
+  🌟 RECOMMENDED - COLORFUL VERSIONS 🌟
+═══════════════════════════════════════════════════════════════
+
+Double-click these files for FULL COLOR:
+
+📁 RUN_COLORFUL_GALLERY.bat
+   └─ See ALL Celtic art in full color!
+      • GREEN Shamrock
+      • GREEN Celtic Crosses (3 versions!)
+      • CYAN & MAGENTA Celtic Knots
+      • YELLOW Elaborate Cross
+      • RED Hand of Ulster
+
+📁 RUN_PSALM84_COLORFUL.bat
+   └─ Psalm 84 exactly like your image!
+      • GREEN Celtic borders
+      • YELLOW psalm text
+      • RED highlighted letters
+
+═══════════════════════════════════════════════════════════════
+  📱 ALSO AVAILABLE - TUI VERSIONS
+═══════════════════════════════════════════════════════════════
+
+These have nice menus but lose embedded colors:
+
+📁 RUN_CELTIC_ULTIMATE.bat
+   └─ Full app with heraldry search + Celtic art
+
+📁 RUN_PSALM84.bat
+   └─ Just the Psalm 84 display
+
+═══════════════════════════════════════════════════════════════
+  🎮 WHAT YOU GET
+═══════════════════════════════════════════════════════════════
+
+CELTIC ART (8 items):
+✓ Irish Shamrock (GREEN)
+✓ Celtic Cross Small (GREEN)
+✓ Celtic Cross Large (GREEN, detailed)
+✓ Celtic Cross JGS (GREEN, by Joan Stark)
+✓ Celtic Knot Pattern 1 (CYAN)
+✓ Celtic Knot Pattern 2 (MAGENTA)
+✓ Elaborate Cross (YELLOW)
+✓ Red Hand of Ulster (RED/MULTI-COLOR)
+
+PLUS:
+✓ Psalm 84 with Celtic borders
+✓ Irish Heraldry Search (622 entries)
+✓ All from Book of Kells + COA-CMD-Tool blended!
+
+═══════════════════════════════════════════════════════════════
+  ⚡ QUICK START (RIGHT NOW!)
+═══════════════════════════════════════════════════════════════
+
+1. Double-click: RUN_COLORFUL_GALLERY.bat
+2. Press 1 to see the GREEN Shamrock
+3. Press 2 to see the GREEN Celtic Cross
+4. Press 8 to see the RED Hand of Ulster
+5. Press Q to exit
+
+Then try:
+- RUN_PSALM84_COLORFUL.bat for your Psalm image!
+
+═══════════════════════════════════════════════════════════════
+
+※ Beannachtaí (Blessings) ※
+All colors preserved! No TUI breaking the art!

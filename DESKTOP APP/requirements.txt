@@ -1,0 +1,22 @@
+# Bible Visualizer Desktop - Python Dependencies
+
+# Core GUI
+PyQt5>=5.15.9
+PyQtWebEngine>=5.15.0
+
+# Visualization
+plotly>=5.18.0
+matplotlib>=3.8.2
+networkx>=3.2.1
+
+# Data Processing
+numpy>=1.26.2
+pandas>=2.1.4
+
+# Graph Analysis
+python-louvain>=0.16  # Community detection
+scipy>=1.11.4
+
+# Optional: Enhanced visualizations
+seaborn>=0.13.0
+pillow>=10.1.0

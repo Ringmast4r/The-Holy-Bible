@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Story Behind the Code - Ringmast4r</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            color: #e0e0e0;
+            line-height: 1.9;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        header {
+            text-align: center;
+            padding: 60px 20px 40px;
+            margin-bottom: 50px;
+        }
+
+        .title {
+            font-size: 3.5rem;
+            font-weight: bold;
+            background: linear-gradient(135deg, #FFD700 0%, #00CED1 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 15px;
+        }
+
+        .subtitle {
+            font-size: 1.4rem;
+            color: #b8b8d1;
+            font-style: italic;
+            margin-bottom: 10px;
+        }
+
+        .signature {
+            font-size: 1.8rem;
+            color: #FFD700;
+            margin-top: 20px;
+            font-family: 'Courier New', monospace;
+        }
+
+        .content {
+            background: rgba(22, 33, 62, 0.6);
+            border: 1px solid rgba(0, 206, 209, 0.3);
+            border-radius: 12px;
+            padding: 50px 60px;
+            margin-bottom: 40px;
+        }
+
+        h2 {
+            font-size: 2rem;
+            color: #FFD700;
+            margin-top: 40px;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid rgba(255, 215, 0, 0.3);
+        }
+
+        h2:first-child {
+            margin-top: 0;
+        }
+
+        h3 {
+            font-size: 1.5rem;
+            color: #00CED1;
+            margin-top: 30px;
+            margin-bottom: 15px;
+        }
+
+        p {
+            margin-bottom: 25px;
+            color: #b8b8d1;
+            font-size: 1.1rem;
+            text-align: justify;
+        }
+
+        .highlight {
+            color: #FFD700;
+            font-weight: bold;
+        }
+
+        .pullquote {
+            background: rgba(0, 206, 209, 0.1);
+            border-left: 5px solid #00CED1;
+            padding: 25px 35px;
+            margin: 35px 0;
+            font-size: 1.3rem;
+            font-style: italic;
+            color: #FFD700;
+            line-height: 1.6;
+        }
+
+        .casual {
+            color: #00CED1;
+            font-weight: 600;
+        }
+
+        .code-snippet {
+            background: #0f1419;
+            border: 1px solid #FFD700;
+            border-radius: 8px;
+            padding: 20px;
+            margin: 25px 0;
+            font-family: 'Courier New', monospace;
+            color: #2ecc71;
+            overflow-x: auto;
+        }
+
+        ul {
+            margin-left: 30px;
+            margin-bottom: 25px;
+            color: #b8b8d1;
+        }
+
+        li {
+            margin-bottom: 12px;
+            font-size: 1.05rem;
+        }
+
+        .stats-inline {
+            color: #FFD700;
+            font-weight: bold;
+            font-size: 1.15rem;
+        }
+
+        .divider {
+            text-align: center;
+            color: #FFD700;
+            font-size: 2rem;
+            margin: 50px 0;
+            letter-spacing: 20px;
+        }
+
+        footer {
+            text-align: center;
+            padding: 40px 20px;
+            border-top: 2px solid rgba(255, 215, 0, 0.3);
+            margin-top: 60px;
+            color: #888;
+        }
+
+        footer a {
+            color: #00CED1;
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            color: #FFD700;
+        }
+
+        @media (max-width: 768px) {
+            .title {
+                font-size: 2.5rem;
+            }
+
+            .content {
+                padding: 30px 25px;
+            }
+
+            p {
+                text-align: left;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="title">The Story Behind the Code</div>
+            <div class="subtitle">Why I Built This (And What I Learned Along the Way)</div>
+            <div class="signature">— Ringmast4r</div>
+        </header>
+
+        <div class="content">
+            <h2>Look, I'm Not a Bible Scholar</h2>
+            <p>
+                Let me just get that out there first. I don't have a theology degree. I don't go to church every Sunday.
+                In fact, I don't go to church often at all. I'm not here to preach to you or tell you how to live your life.
+            </p>
+            <p>
+                I'm just a guy from an Irish Catholic family who went to Irish Catholic school my whole life.
+                My parents raised me in the faith. I sat through Mass, memorized prayers, learned the stories.
+                And somehow, despite all the years since then, I think it impacted me more than I realized.
+            </p>
+            <p>
+                I don't claim to know the Bible inside and out. Honestly? <span class="casual">I don't know that much about it.</span>
+                But I know enough to see something that most people miss.
+            </p>
+
+            <div class="pullquote">
+                Most people see the Bible as that stupid old silly book sitting in a hotel room that nobody reads.
+                <br><br>
+                I see it as the only weapon given to us by God.
+            </div>
+
+            <h2>Things I Can't Explain</h2>
+            <p>
+                I've experienced things in my life that I can't explain. Things that have nothing to do with this project,
+                but everything to do with why I believe the Lord has been there for me.
+            </p>
+            <p>
+                I can't prove it. I don't have a burning bush story or a dramatic conversion moment. But I've felt
+                something—protection, guidance, grace—in ways that don't make logical sense. And I think that's
+                part of what faith is. Not knowing everything, but knowing enough.
+            </p>
+            <p>
+                I try to live the way I think Christ would want me to live. Not perfectly. Not even close. But I try.
+                And part of that is seeing this Book—not as rules and religion—but as something <em>powerful</em>.
+            </p>
+
+            <div class="divider">✦ ✦ ✦</div>
+
+            <h2>Why I Built This</h2>
+            <p>
+                Here's the thing about the Bible that most people don't realize: it's not just a collection of random stories.
+                It's <span class="highlight">interconnected</span>. Every book, every chapter, every verse points to something else.
+                Genesis echoes in Revelation. The Prophets foreshadow the Gospels. It's all woven together.
+            </p>
+            <p>
+                And I thought: What if people could <em>see</em> that? Not just read about it, but actually
+                <span class="casual">visualize</span> how it all connects?
+            </p>
+            <p>
+                So I started coding. Not because I'm some expert. Not because I have all the answers. But because
+                I wanted to show people what I was seeing. Maybe if they could see it too, they'd understand
+                why this Book isn't just some relic from ancient history.
+            </p>
+
+            <div class="pullquote">
+                This isn't about religion. It's about seeing the pattern. The design. The weapon.
+            </div>
+
+            <h2>The Data Doesn't Lie</h2>
+            <p>
+                I found this dataset—the Treasury of Scripture Knowledge. It's public domain, compiled by scholars
+                over centuries. <span class="stats-inline">Over 340,000 cross-references</span> mapping how verses
+                connect to each other across the entire Bible.
+            </p>
+            <p>
+                And when you look at it—when you actually <em>visualize</em> it—you see the pattern. You see how
+                Genesis chapter 3 connects to Romans chapter 5. How Isaiah's prophecies thread through the Gospels.
+                How Revelation mirrors the Exodus.
+            </p>
+            <p>
+                It's not random. It's not coincidence. It's <span class="casual">design</span>.
+            </p>
+            <p>
+                And that's what this whole project is: making that design visible. Not to prove anything to anyone.
+                Not to convert people or start arguments. Just to show what's there.
+            </p>
+
+            <div class="divider">✦ ✦ ✦</div>
+
+            <h2>What This Taught Me</h2>
+            <p>
+                Building this changed how I see the Bible. I didn't expect that. I thought I was just making
+                a cool visualization tool. But when you spend hundreds of hours in the text, following
+                connections, seeing patterns... something shifts.
+            </p>
+            <p>
+                The Old Testament and New Testament aren't two separate books. They're one story. Every page
+                in the NT is soaked in OT references. Over <span class="stats-inline">60,000 cross-testament
+                connections</span>. That's not an accident.
+            </p>
+            <p>
+                The unity is undeniable. 66 books, written over 1,500 years by 40+ different authors, and it
+                all fits together like a tapestry. You can see it in the data.
+            </p>
+
+            <h2>I'm Not Asking You to Believe Anything</h2>
+            <p>
+                You don't have to be religious to use this. You don't have to believe in God. You don't have to
+                agree with anything I've said here.
+            </p>
+            <p>
+                All I'm asking is that you <em>look</em>. Look at the data. Look at the connections. See the pattern
+                for yourself.
+            </p>
+            <p>
+                Maybe you'll see what I see. Maybe you won't. But at least you'll know it's there.
+            </p>
+
+            <div class="divider">✦ ✦ ✦</div>
+
+            <h2>The Hotel Room Book</h2>
+            <p>
+                That Bible sitting in hotel nightstands? The one everyone jokes about but nobody reads?
+                That book has <span class="stats-inline">340,000+ internal cross-references</span>. It maps itself.
+                Every verse points to other verses. It's self-documenting, self-referential, interconnected
+                across thousands of years.
+            </p>
+            <p>
+                And people just... ignore it. They dismiss it as old mythology or outdated rules.
+            </p>
+            <p>
+                But what if they could <em>see</em> it differently? What if instead of a dusty book, they saw
+                a weapon? A tool? A map?
+            </p>
+            <p>
+                That's why I built this. Not to shove religion down anyone's throat. But to show them what
+                they're missing when they write it off.
+            </p>
+
+            <h2>To My Irish Catholic Roots</h2>
+            <p>
+                My parents gave me something when they sent me to Catholic school. At the time, I didn't
+                appreciate it. Mass felt long. The prayers felt repetitive. The stories felt... old.
+            </p>
+            <p>
+                But it planted something in me. A foundation. A framework. Even now, even without going
+                to church every week, I think about Christ. I think about how He'd want me to live.
+                I think about grace, forgiveness, sacrifice.
+            </p>
+            <p>
+                Maybe that Irish Catholic upbringing is why I see the Bible differently. Not as a rulebook.
+                Not as ancient history. But as something <span class="casual">living</span>.
+            </p>
+            <p>
+                So this is, in a way, my thanks to them. To my parents. To the nuns and priests who taught me.
+                To the tradition that shaped me, even when I didn't realize it was happening.
+            </p>
+
+            <h2>Why "Get Proselytized"?</h2>
+            <p>
+                The name is a little cheeky, I know. But it's honest.
+            </p>
+            <p>
+                I want you to get proselytized by the <em>data</em>. Not by me. Not by religion. By the
+                connections themselves. By seeing how it all fits together in ways you can't unsee.
+            </p>
+            <p>
+                Call it what you want—design, coincidence, divine inspiration. All I know is it's there.
+                And once you see it, you can't ignore it.
+            </p>
+
+            <div class="divider">✦ ✦ ✦</div>
+
+            <h2>A Note to You</h2>
+            <p>
+                I don't know who you are or why you're reading this. Maybe you stumbled here by accident.
+                Maybe you're curious. Maybe you're skeptical. That's okay.
+            </p>
+            <p>
+                I'm not here to convince you of anything. I'm not trying to convert you. I'm just showing
+                you what I found when I looked closer at that "stupid old silly book" everyone dismisses.
+            </p>
+            <p>
+                If you see it, great. If you don't, that's fine too. But at least now you know someone
+                looked at the data and saw something worth sharing.
+            </p>
+
+            <div class="pullquote">
+                The only weapon given to us by God is worth a second look.
+            </div>
+
+            <p style="margin-top: 40px; text-align: center; font-size: 1.2rem;">
+                Thanks for reading. Now go see for yourself.
+            </p>
+
+            <p style="text-align: center; margin-top: 30px;">
+                <span class="signature" style="font-size: 1.5rem;">— Ringmast4r</span>
+                <br>
+                <span style="color: #888; font-size: 0.95rem; font-style: italic;">
+                    Just a guy who saw a pattern and wanted to share it.
+                </span>
+            </p>
+        </div>
+
+        <footer>
+            <p>
+                <a href="index.html">Back to Visualizer</a> |
+                <a href="https://github.com/Ringmast4r/www.getproselytized.com" target="_blank">GitHub</a>
+            </p>
+            <p style="margin-top: 15px; color: #666; font-size: 0.9rem;">
+                The only weapon given to us by God.
+            </p>
+        </footer>
+    </div>
+</body>
+</html>

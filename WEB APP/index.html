@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bible Cross-Reference Visualizer - 340,000+ Scripture Connections | @Ringmast4r</title>
+    <meta name="description" content="Explore 340,000+ Bible cross-references with interactive visualizations. Created by @Ringmast4r. Features arc diagrams, network graphs, geographic maps, and more.">
+    <meta name="keywords" content="Bible, cross-references, visualization, scripture, biblical study, @Ringmast4r, Treasury of Scripture Knowledge">
+    <meta name="author" content="@Ringmast4r">
+    <meta name="google-adsense-account" content="ca-pub-3566183763727617">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="celtic-cross.png">
+
+    <!-- PWA Manifest -->
+    <link rel="manifest" href="/manifest.json">
+    <meta name="theme-color" content="#FFD700">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Bible Viz">
+
+    <!-- Google AdSense -->
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3566183763727617"
+            crossorigin="anonymous"></script>
+
+    <!-- Leaflet CSS for OpenStreetMap -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+
+    <link rel="stylesheet" href="css/styles.css">
+
+    <style>
+        /* CRITICAL: Prevent white flash IMMEDIATELY before CSS loads */
+        html, body {
+            background: #1a1a2e;
+            background-color: #1a1a2e;
+        }
+
+        /* ringmast4r watermark */
+        .watermark {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: rgba(26, 26, 46, 0.95);
+            padding: 12px 24px;
+            border-radius: 10px;
+            border: 2px solid var(--primary-gold);
+            z-index: 10000;
+            font-size: 1rem;
+            color: var(--primary-gold);
+            font-weight: bold;
+            box-shadow: 0 6px 20px rgba(255, 215, 0, 0.4);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .watermark img {
+            filter: drop-shadow(0 0 4px rgba(255, 215, 0, 0.6));
+        }
+
+        .watermark a {
+            color: var(--primary-gold);
+            text-decoration: none;
+            font-size: 1rem;
+        }
+
+        .watermark a:hover {
+            color: var(--primary-cyan);
+            text-shadow: 0 0 8px rgba(0, 206, 209, 0.6);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header - Compact -->
+        <header style="padding: 4px 0; margin-bottom: 6px;">
+            <h1 style="margin: 0; padding: 0; font-size: 1.1em; display: flex; align-items: center; justify-content: center; gap: 8px;">
+                <img src="celtic-cross.png" alt="Celtic Cross" width="24" height="24" style="display: inline-block; vertical-align: middle;">
+                <span>Bible Cross-Reference Visualizer</span>
+                <img src="celtic-cross.png" alt="Celtic Cross" width="24" height="24" style="display: inline-block; vertical-align: middle;">
+            </h1>
+            <p class="subtitle" style="margin: 0; padding: 0; font-size: 0.75em;">Explore 340,000+ connections | <a href="https://github.com/Ringmast4r" style="color: var(--bg-dark); text-decoration: none; font-weight: bold;">@Ringmast4r</a></p>
+        </header>
+
+        <!-- Navigation Tabs -->
+        <nav class="tabs">
+            <!-- Core Cross-Reference Visualizations (WORKING) -->
+            <button class="tab-btn active" data-viz="arc">Arc Diagram</button>
+            <button class="tab-btn" data-viz="radial">Radial Arc</button>
+            <button class="tab-btn" data-viz="chord">Chord Diagram</button>
+            <button class="tab-btn" data-viz="sunburst">Sunburst</button>
+            <button class="tab-btn" data-viz="network">Network Graph</button>
+
+            <!-- Theographic Visualizations (WORKING) -->
+            <button class="tab-btn" data-viz="geomap">Geographic Map</button>
+            <button class="tab-btn" data-viz="timeline">Timeline</button>
+            <button class="tab-btn" data-viz="people">People Network</button>
+
+            <!-- Utility Pages (WORKING) -->
+            <button class="tab-btn" data-viz="stats">Statistics</button>
+            <button class="tab-btn" data-viz="search">Search</button>
+
+            <!-- NEW FEATURES (TEST THESE) -->
+            <button class="tab-btn" data-viz="sankey">📊 Sankey Diagrams</button>
+            <button class="tab-btn" data-viz="photos">📷 Photo Gallery</button>
+            <button class="tab-btn" data-viz="refgrid">📊 Reference Grid</button>
+            <button class="tab-btn" data-viz="words">📖 Word Explorer</button>
+        </nav>
+
+        <!-- Controls -->
+        <div class="controls">
+            <div class="control-group">
+                <label for="testament-filter">Testament:</label>
+                <select id="testament-filter">
+                    <option value="all">All</option>
+                    <option value="OT">Old Testament</option>
+                    <option value="NT">New Testament</option>
+                    <option value="cross">OT ↔ NT</option>
+                </select>
+            </div>
+
+            <div class="control-group">
+                <label for="book-select">Focus Book:</label>
+                <select id="book-select">
+                    <option value="">All Books</option>
+                </select>
+            </div>
+
+            <div class="control-group">
+                <label for="min-connections">Min Connections:</label>
+                <input type="range" id="min-connections" min="1" max="100" value="1">
+                <span id="min-value">1</span>
+            </div>
+
+            <button id="reset-btn" class="btn">Reset View</button>
+            <button id="export-btn" class="btn btn-primary">Export SVG</button>
+        </div>
+
+        <!-- Visualization Area -->
+        <div class="viz-container">
+            <!-- Arc Diagram -->
+            <div id="arc-viz" class="viz-panel active">
+                <div class="viz-info">
+                    <h3>Arc Diagram</h3>
+                    <p>Visualization of 190,522 chapter connections using circular arcs. Rainbow gradient colors represent distance between chapters. Created by Ringmast4r.</p>
+                </div>
+                <svg id="arc-svg"></svg>
+                <div id="arc-tooltip" class="tooltip"></div>
+            </div>
+
+            <!-- Radial Arc Diagram -->
+            <div id="radial-viz" class="viz-panel">
+                <svg id="radial-svg"></svg>
+                <div id="radial-tooltip" class="tooltip"></div>
+            </div>
+
+            <!-- Network Graph -->
+            <div id="network-viz" class="viz-panel">
+                <div class="viz-info">
+                    <h3>Network Graph</h3>
+                    <p>Interactive force-directed graph showing verse relationships. Drag nodes to explore.</p>
+                </div>
+                <svg id="network-svg"></svg>
+                <div id="network-tooltip" class="tooltip"></div>
+            </div>
+
+            <!-- Cross-Reference Grid -->
+            <div id="refgrid-viz" class="viz-panel">
+                <div class="viz-info">
+                    <h3>📊 Cross-Reference Heat Map</h3>
+                    <p>See connection density between all 66 Bible books. Darker colors = more cross-references.</p>
+                </div>
+                <svg id="refgrid-svg"></svg>
+                <div id="refgrid-tooltip" class="tooltip"></div>
+            </div>
+
+            <!-- Chord Diagram -->
+            <div id="chord-viz" class="viz-panel">
+                <div class="viz-info">
+                    <h3>Chord Diagram</h3>
+                    <p>Circular diagram showing relationships between Bible books.</p>
+                </div>
+                <svg id="chord-svg"></svg>
+                <div id="chord-tooltip" class="tooltip"></div>
+            </div>
+
+            <!-- Sunburst -->
+            <div id="sunburst-viz" class="viz-panel">
+                <div class="viz-info">
+                    <h3>Sunburst Diagram</h3>
+                    <p>Hierarchical view: Testament → Book → Chapter. Click to zoom in.</p>
+                </div>
+                <svg id="sunburst-svg"></svg>
+                <div id="sunburst-tooltip" class="tooltip"></div>
+            </div>
+
+            <!-- Sankey Diagrams -->
+            <div id="sankey-viz" class="viz-panel">
+                <div class="viz-info">
+                    <h3>📊 Bible Section Sankey Diagrams</h3>
+                    <p>See how 20 Bible translations divide books into sections. Thicker flows = more translations agree on that division.</p>
+                    <div class="control-group" style="margin-top: 10px;">
+                        <label for="sankey-book-select">Select Book:</label>
+                        <select id="sankey-book-select" style="padding: 8px; font-size: 14px;">
+                            <option value="Genesis">Genesis</option>
+                            <option value="Exodus">Exodus</option>
+                            <option value="Leviticus">Leviticus</option>
+                            <option value="Numbers">Numbers</option>
+                            <option value="Deuteronomy">Deuteronomy</option>
+                            <option value="Joshua">Joshua</option>
+                            <option value="Judges">Judges</option>
+                            <option value="Ruth">Ruth</option>
+                            <option value="1 Samuel">1 Samuel</option>
+                            <option value="2 Samuel">2 Samuel</option>
+                            <option value="1 Kings">1 Kings</option>
+                            <option value="2 Kings">2 Kings</option>
+                            <option value="Ezra">Ezra</option>
+                            <option value="Nehemiah">Nehemiah</option>
+                            <option value="Esther">Esther</option>
+                            <option value="Job">Job</option>
+                            <option value="Psalms">Psalms</option>
+                            <option value="Proverbs">Proverbs</option>
+                            <option value="Ecclesiastes">Ecclesiastes</option>
+                            <option value="Song of Solomon">Song of Solomon</option>
+                        </select>
+                    </div>
+                </div>
+                <svg id="sankey-svg"></svg>
+                <div id="sankey-tooltip" class="tooltip"></div>
+            </div>
+
+            <!-- Geographic Map -->
+            <div id="geomap-viz" class="viz-panel">
+                <div class="viz-info">
+                    <h3>Geographic Map of Biblical Places</h3>
+                    <p>Explore 1,600+ biblical locations with GPS coordinates. Click places to see cross-references.</p>
+                </div>
+                <div id="geomap-container" style="width: 100%; height: 600px;"></div>
+                <div id="geomap-tooltip" class="tooltip"></div>
+            </div>
+
+            <!-- Photo Gallery -->
+            <div id="photos-viz" class="viz-panel">
+                <div class="viz-info">
+                    <h3>📷 Biblical Location Photos</h3>
+                    <p>Browse 1,650+ photos of biblical places from Wikimedia Commons. Search, filter, and view full-resolution images.</p>
+                </div>
+                <div id="photo-gallery-container"></div>
+            </div>
+
+            <!-- Timeline -->
+            <div id="timeline-viz" class="viz-panel">
+                <div class="viz-info">
+                    <h3>Biblical Events Timeline</h3>
+                    <p>Chronological view of major biblical events and their connections.</p>
+                </div>
+                <svg id="timeline-svg"></svg>
+                <div id="timeline-tooltip" class="tooltip"></div>
+            </div>
+
+            <!-- People Network -->
+            <div id="people-viz" class="viz-panel">
+                <div class="viz-info">
+                    <h3>Biblical People Network</h3>
+                    <p>Network graph showing relationships between 3,000+ biblical people.</p>
+                </div>
+                <svg id="people-svg"></svg>
+                <div id="people-tooltip" class="tooltip"></div>
+            </div>
+
+            <!-- Statistics -->
+            <div id="stats-viz" class="viz-panel">
+                <div class="viz-info">
+                    <h3>Statistics Dashboard</h3>
+                </div>
+                <div id="stats-content" class="stats-grid"></div>
+            </div>
+
+            <!-- Word Explorer -->
+            <div id="words-viz" class="viz-panel">
+                <div id="word-explorer-container"></div>
+            </div>
+
+            <!-- Search -->
+            <div id="search-viz" class="viz-panel">
+                <div class="search-container">
+                    <h2>🔍 Search Bible Connections</h2>
+                    <div class="search-box">
+                        <input type="text" id="search-input" placeholder="Enter book, chapter, or verse (e.g., 'John 3:16' or 'Genesis')">
+                        <button id="search-btn" class="btn btn-primary">Search</button>
+                    </div>
+                    <div id="search-results"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <footer>
+            <p>Created by <a href="https://github.com/Ringmast4r" style="color: var(--accent-gold);">@Ringmast4r</a> | <a href="about.html" style="color: var(--accent-gold);">About</a> | <a href="quirk.html" style="color: var(--accent-gold);">The Story</a> | <a href="poem.html" style="color: var(--accent-cyan);">📖 The Poem</a> | <a href="https://github.com/Ringmast4r/www.getproselytized.com" style="color: var(--accent-gold);">Source Code</a></p>
+        </footer>
+    </div>
+
+    <!-- ringmast4r watermark -->
+    <div class="watermark">
+        <img src="celtic-cross.png" alt="Celtic Cross" width="20" height="20">
+        <span>Built by <a href="https://github.com/Ringmast4r" target="_blank">@Ringmast4r</a></span>
+    </div>
+
+    <!-- Floating Theme Toggle -->
+    <div id="theme-toggle" class="floating-theme-toggle" title="Cycle Color Themes">
+        <svg class="theme-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+        </svg>
+    </div>
+
+    <!-- D3.js Library -->
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+
+    <!-- D3 Sankey Plugin -->
+    <script src="https://cdn.jsdelivr.net/npm/d3-sankey@0.12.3/dist/d3-sankey.min.js"></script>
+
+    <!-- Leaflet Library for OpenStreetMap -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+    <!-- TopoJSON Library (for real geographic maps) -->
+    <script src="https://cdn.jsdelivr.net/npm/topojson-client@3"></script>
+
+    <!-- Service Worker Registration (MUST BE FIRST for caching) -->
+    <script src="js/sw-register.js"></script>
+
+    <!-- Preview Data (97KB - loads instantly for immediate visualization) -->
+    <script src="js/preview-data.js"></script>
+
+    <!-- Bible Verse Loader (Global) - Load BEFORE visualizations! -->
+    <script src="js/bible-verse-loader.js"></script>
+
+    <!-- Bible Dictionary (Global) - Easton's Dictionary for all visualizations -->
+    <script src="js/bible-dictionary.js"></script>
+
+    <!-- Visitor Analytics Tracker - DISABLED (GitHub API 403 errors, all data on Cloudflare now) -->
+    <!-- <script src="js/bible-tracker.js"></script> -->
+
+    <!-- Performance Optimizations -->
+    <script src="js/prefetch.js"></script>
+
+    <!-- Visualization Scripts -->
+    <script src="js/data-loader.js"></script>
+    <script src="js/theographic-loader.js"></script>
+    <script src="js/color-schemes.js"></script>
+    <script src="js/arc-diagram-tableau-style.js"></script>
+    <script src="js/network-graph.js"></script>
+    <script src="js/chord-diagram.js"></script>
+    <script src="js/sunburst.js"></script>
+    <script src="js/geographic-map.js"></script>
+    <script src="js/timeline.js"></script>
+    <script src="js/people-network.js"></script>
+    <script src="js/radial-arc.js"></script>
+    <script src="js/search.js"></script>
+    <script src="js/photo-gallery.js"></script>
+    <script src="js/cross-reference-grid.js"></script>
+    <script src="js/sankey-diagram.js"></script>
+    <script src="js/word-explorer.js"></script>
+    <script src="js/main.js"></script>
+
+    <!-- Google AdSense Display Ad -->
+    <script>
+        // Optional: Insert display ads programmatically
+        // (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+</body>
+</html>

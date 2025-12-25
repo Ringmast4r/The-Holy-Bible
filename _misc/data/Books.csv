@@ -1,0 +1,67 @@
+BookID,BookName,NumOfChapters,BookDiv,ShortName
+1,Genesis,50,OT,Gene
+2,Exodus,40,OT,Exod
+3,Leviticus,27,OT,Levi
+4,Numbers,36,OT,Numb
+5,Deuteronomy,34,OT,Deut
+6,Joshua,24,OT,Josh
+7,Judges,21,OT,Judg
+8,Ruth,4,OT,Ruth
+9,1 Samuel,31,OT,1 Sa
+10,2 Samuel,24,OT,2 Sa
+11,1 Kings,22,OT,1 Ki
+12,2 Kings,25,OT,2 Ki
+13,1 Chronicles,29,OT,1 Ch
+14,2 Chronicles,36,OT,2 Ch
+15,Ezra,10,OT,Ezra
+16,Nehemiah,13,OT,Nehe
+17,Esther,10,OT,Esth
+18,Job,42,OT,Job
+19,Psalms,150,OT,Psal
+20,Proverbs,31,OT,Prov
+21,Ecclesiastes,12,OT,Eccl
+22,Song of Solomon,8,OT,Song
+23,Isaiah,66,OT,Isai
+24,Jeremiah,52,OT,Jere
+25,Lamentations,5,OT,Lame
+26,Ezekiel,48,OT,Ezek
+27,Daniel,12,OT,Dani
+28,Hosea,14,OT,Hose
+29,Joel,3,OT,Joel
+30,Amos,9,OT,Amos
+31,Obadiah,1,OT,Obad
+32,Jonah,4,OT,Jona
+33,Micah,7,OT,Mica
+34,Nahum,3,OT,Nahu
+35,Habakkuk,3,OT,Haba
+36,Zephaniah,3,OT,Zeph
+37,Haggai,2,OT,Hagg
+38,Zechariah,14,OT,Zech
+39,Malachi,4,OT,Mala
+40,Matthew,28,NT,Matt
+41,Mark,16,NT,Mark
+42,Luke,24,NT,Luke
+43,John,21,NT,John
+44,Acts,28,NT,Acts
+45,Romans,16,NT,Roma
+46,1 Corinthians,16,NT,1 Co
+47,2 Corinthians,13,NT,2 Co
+48,Galatians,6,NT,Gala
+49,Ephesians,6,NT,Ephe
+50,Philippians,4,NT,Phil
+51,Colossians,4,NT,Colo
+52,1 Thessalonians,5,NT,1 Th
+53,2 Thessalonians,3,NT,2 Th
+54,1 Timothy,6,NT,1 Ti
+55,2 Timothy,4,NT,2 Ti
+56,Titus,3,NT,Titu
+57,Philemon,1,NT,Phil
+58,Hebrews,13,NT,Hebr
+59,James,5,NT,Jame
+60,1 Peter,5,NT,1 Pe
+61,2 Peter,3,NT,2 Pe
+62,1 John,5,NT,1 Jo
+63,2 John,1,NT,2 Jo
+64,3 John,1,NT,3 Jo
+65,Jude,1,NT,Jude
+66,Revelation,22,NT,Reve

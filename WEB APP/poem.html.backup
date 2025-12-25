@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Accidental Bible Poems - Word Frequency Patterns | @Ringmast4r</title>
+    <meta name="description" content="Biblical poems accidentally formed by word frequency. The DNA of Scripture revealed through data.">
+    <meta name="author" content="@Ringmast4r">
+    <link rel="icon" type="image/png" href="celtic-cross.png">
+
+    <style>
+        :root {
+            --primary-gold: #FFD700;
+            --primary-cyan: #00CED1;
+            --bg-dark: #1a1a2e;
+            --bg-darker: #0f0f1e;
+            --text-primary: #FFFFFF;
+            --text-secondary: #CCCCCC;
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        html, body {
+            background: var(--bg-dark);
+            color: var(--text-primary);
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            min-height: 100vh;
+        }
+
+        body {
+            background: linear-gradient(135deg, #1a1a2e 0%, #0f0f1e 100%);
+            padding: 20px;
+        }
+
+        .container { max-width: 1400px; margin: 0 auto; }
+
+        header {
+            text-align: center;
+            padding: 40px 0;
+            border-bottom: 3px solid var(--primary-gold);
+            margin-bottom: 40px;
+        }
+
+        header h1 {
+            font-size: 2.5em;
+            color: var(--primary-gold);
+            text-shadow: 0 0 20px rgba(255, 215, 0, 0.5);
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        header .subtitle {
+            font-size: 1.1em;
+            color: var(--text-secondary);
+            font-style: italic;
+            margin-top: 10px;
+        }
+
+        header .subtitle a {
+            color: var(--primary-cyan);
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .tab-nav {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 40px;
+            flex-wrap: wrap;
+        }
+
+        .tab-button {
+            background: rgba(255, 255, 255, 0.05);
+            border: 2px solid var(--primary-gold);
+            color: var(--text-primary);
+            padding: 12px 25px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1em;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+
+        .tab-button:hover {
+            background: rgba(255, 215, 0, 0.2);
+            box-shadow: 0 0 20px rgba(255, 215, 0, 0.4);
+        }
+
+        .tab-button.active {
+            background: var(--primary-gold);
+            color: var(--bg-dark);
+            box-shadow: 0 4px 15px rgba(255, 215, 0, 0.5);
+        }
+
+        .tab-content { display: none; }
+        .tab-content.active {
+            display: block;
+            animation: fadeIn 0.5s ease-in;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .poem-container {
+            background: linear-gradient(135deg, rgba(0, 206, 209, 0.1) 0%, rgba(255, 215, 0, 0.1) 100%);
+            border: 3px solid var(--primary-cyan);
+            border-radius: 15px;
+            padding: 40px;
+            margin: 30px auto;
+            max-width: 900px;
+            box-shadow: 0 0 40px rgba(0, 206, 209, 0.3);
+        }
+
+        .poem-title {
+            text-align: center;
+            font-size: 1.8em;
+            color: var(--primary-cyan);
+            margin-bottom: 10px;
+            text-shadow: 0 0 20px rgba(0, 206, 209, 0.6);
+            font-style: italic;
+        }
+
+        .poem-subtitle {
+            text-align: center;
+            font-size: 0.9em;
+            color: var(--text-secondary);
+            margin-bottom: 30px;
+        }
+
+        .poem-content {
+            font-family: 'Georgia', serif;
+            font-size: 1.3em;
+            line-height: 2.2;
+            text-align: center;
+            color: var(--text-primary);
+        }
+
+        .poem-line {
+            margin: 15px 0;
+            text-shadow: 0 0 10px rgba(255, 215, 0, 0.3);
+        }
+
+        .poem-line strong {
+            color: var(--primary-gold);
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .poem-line.small-text {
+            font-size: 0.85em;
+            line-height: 1.8;
+        }
+
+        .description-box {
+            background: rgba(255, 255, 255, 0.05);
+            border: 2px solid var(--primary-gold);
+            border-radius: 10px;
+            padding: 20px;
+            margin: 30px auto;
+            max-width: 900px;
+        }
+
+        .description-box h3 {
+            color: var(--primary-gold);
+            margin-bottom: 10px;
+        }
+
+        .description-box p {
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        .back-button {
+            display: inline-block;
+            background: var(--primary-gold);
+            color: var(--bg-dark);
+            padding: 12px 30px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: bold;
+            margin-bottom: 30px;
+            transition: all 0.3s ease;
+        }
+
+        .back-button:hover {
+            background: var(--primary-cyan);
+            transform: translateY(-3px);
+        }
+
+        footer {
+            margin-top: 60px;
+            padding: 30px 0;
+            border-top: 2px solid var(--primary-gold);
+            text-align: center;
+            color: var(--text-secondary);
+        }
+
+        footer a {
+            color: var(--primary-cyan);
+            text-decoration: none;
+        }
+
+        @media (max-width: 768px) {
+            header h1 { font-size: 1.8em; }
+            .poem-container { padding: 25px; }
+            .poem-content { font-size: 1.1em; }
+            .tab-nav { gap: 10px; }
+            .tab-button { padding: 10px 15px; font-size: 0.9em; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>
+                <img src="celtic-cross.png" alt="Celtic Cross" width="40" height="40">
+                📖 The Accidental Bible Poems
+                <img src="celtic-cross.png" alt="Celtic Cross" width="40" height="40">
+            </h1>
+            <p class="subtitle">Biblical patterns revealed through word frequency analysis</p>
+            <p class="subtitle">Created by <a href="https://github.com/Ringmast4r">@Ringmast4r</a></p>
+        </header>
+
+        <a href="index.html" class="back-button">← Back to Main Visualizer</a>
+
+        <div class="tab-nav">
+            <button class="tab-button active" data-tab="filtered">No Stop Words (Top 50)</button>
+            <button class="tab-button" data-tab="stopwords">With Stop Words (Top 50)</button>
+            <button class="tab-button" data-tab="extended">Extended (Top 100)</button>
+            <button class="tab-button" data-tab="testament">By Testament</button>
+        </div>
+
+        <!-- Tab 1: Filtered -->
+        <div class="tab-content active" id="filtered">
+            <div class="description-box">
+                <h3>🎯 Filtered View (No Stop Words)</h3>
+                <p>The top 50 most frequent words, <strong>excluding</strong> common stop words like "the", "and", "of", etc. This reveals the meaningful vocabulary of Scripture.</p>
+            </div>
+
+            <div class="poem-container">
+                <div class="poem-title">"The Word Frequencies Speak"</div>
+                <div class="poem-subtitle">Top 50 Words, Stop Words Removed</div>
+                <div class="poem-content">
+                    <div class="poem-line">
+                        <strong>JEHOVAH GOD</strong> of <strong>ISRAEL</strong>,<br>
+                        <strong>YOU, MAN, SON</strong> - <strong>HATH</strong>
+                    </div>
+
+                    <div class="poem-line">
+                        <strong>KING</strong> of the <strong>HOUSE</strong>,<br>
+                        <strong>COME, PEOPLE!</strong>
+                    </div>
+
+                    <div class="poem-line">
+                        <strong>THEN YOUR BEFORE LAND CHILDREN</strong><br>
+                        <strong>DAY</strong>, <strong>MEN AGAINST</strong> - <strong>SHALT</strong>
+                    </div>
+
+                    <div class="poem-line">
+                        <strong>ALSO LET EVEN HAND</strong><br>
+                        <strong>NOW SAYING:</strong>
+                    </div>
+
+                    <div class="poem-line">
+                        "<strong>LORD, BEHOLD!</strong>"<br>
+                        <strong>SAITH THESE</strong>
+                    </div>
+
+                    <div class="poem-line">
+                        <strong>OUR BECAUSE THINGS,</strong><br>
+                        <strong>EVERY SONS DOWN</strong>
+                    </div>
+
+                    <div class="poem-line">
+                        <strong>THEREFORE AFTER MAKE</strong><br>
+                        <strong>MAY DAVID SAY</strong>
+                    </div>
+
+                    <div class="poem-line">
+                        <strong>OVER THEREOF FORTH</strong><br>
+                        <strong>SHE, WHAT AWAY</strong><br>
+                        <strong>HAST PUT...</strong>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tab 2: With Stop Words -->
+        <div class="tab-content" id="stopwords">
+            <div class="description-box">
+                <h3>📚 Raw View (With Stop Words)</h3>
+                <p>The top 50 most frequent words <strong>including</strong> common words like "the", "and", "of". This shows the grammatical structure of the Bible.</p>
+            </div>
+
+            <div class="poem-container">
+                <div class="poem-title">"The Grammar of God"</div>
+                <div class="poem-subtitle">Top 50 Words, All Included</div>
+                <div class="poem-content small-text">
+                    <div class="poem-line">
+                        <strong>THE AND OF TO THAT IN HE</strong><br>
+                        <strong>UNTO FOR SHALL I A HIS THEY</strong>
+                    </div>
+
+                    <div class="poem-line">
+                        <strong>IS JEHOVAH HIM NOT BE THEM IT</strong><br>
+                        <strong>WITH ALL THOU THY MY WAS</strong>
+                    </div>
+
+                    <div class="poem-line">
+                        <strong>WILL ME GOD YE BUT THEIR SAID</strong><br>
+                        <strong>FROM THEE HAVE AS ARE</strong>
+                    </div>
+
+                    <div class="poem-line">
+                        <strong>WHICH UPON OUT WERE THIS WHEN</strong><br>
+                        <strong>ISRAEL YOU MAN UP BY</strong>
+                    </div>
+                </div>
+                <div style="text-align: center; margin-top: 20px; color: var(--text-secondary); font-style: italic;">
+                    Notice how "JEHOVAH" and "GOD" emerge even among grammatical noise
+                </div>
+            </div>
+        </div>
+
+        <!-- Tab 3: Extended -->
+        <div class="tab-content" id="extended">
+            <div class="description-box">
+                <h3>📜 Extended View (Top 100 Words)</h3>
+                <p>The top 100 most frequent words, stop words removed. A longer narrative emerges with more vocabulary.</p>
+            </div>
+
+            <div class="poem-container">
+                <div class="poem-title">"The Longer Testament"</div>
+                <div class="poem-subtitle">Top 100 Words, Stop Words Removed</div>
+                <div class="poem-content small-text">
+                    <div class="poem-line">
+                        <strong>JEHOVAH GOD ISRAEL YOU MAN SON HATH KING HOUSE COME</strong>
+                    </div>
+
+                    <div class="poem-line">
+                        <strong>PEOPLE THEN YOUR BEFORE LAND CHILDREN DAY MEN AGAINST SHALT</strong>
+                    </div>
+
+                    <div class="poem-line">
+                        <strong>ALSO LET EVEN HAND NOW SAYING LORD BEHOLD SAITH THESE</strong>
+                    </div>
+
+                    <div class="poem-line">
+                        <strong>OUR BECAUSE THINGS EVERY SONS DOWN THEREFORE AFTER MAKE MAY</strong>
+                    </div>
+
+                    <div class="poem-line">
+                        <strong>DAVID SAY OVER THEREOF FORTH SHE WHAT AWAY HAST PUT</strong>
+                    </div>
+
+                    <div class="poem-line">
+                        <strong>GOT GIVE GIVEN TWO WENT NAME CITY SENT FATHER HEAR</strong>
+                    </div>
+
+                    <div class="poem-line">
+                        <strong>AGAIN PLACE CAME SUCH GREAT TAKE EGYPT SPOKE JERUSALEM JUDAH</strong>
+                    </div>
+
+                    <div class="poem-line">
+                        <strong>PRIEST MOSES WORDS YEARS WITHOUT AMONG THREE DAYS FACE</strong>
+                    </div>
+
+                    <div class="poem-line">
+                        <strong>ANOTHER NEITHER SEE PART STILL SERVANT RIGHTEOUSNESS COVENANT HEART</strong>
+                    </div>
+
+                    <div class="poem-line">
+                        <strong>JESUS CHRIST PAUL BRETHREN SPIRIT FAITH WORKS WRITTEN ANSWERED...</strong>
+                    </div>
+                </div>
+                <div style="text-align: center; margin-top: 20px; color: var(--text-secondary); font-style: italic;">
+                    Key biblical figures emerge: DAVID, MOSES, JESUS, CHRIST, PAUL
+                </div>
+            </div>
+        </div>
+
+        <!-- Tab 4: By Testament -->
+        <div class="tab-content" id="testament">
+            <div class="description-box">
+                <h3>⚖️ Testament Comparison</h3>
+                <p>Word frequencies split between Old Testament and New Testament. Notice the vocabulary shift.</p>
+            </div>
+
+            <div class="poem-container" style="max-width: 1100px;">
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 40px;">
+                    <div>
+                        <div class="poem-title" style="font-size: 1.4em;">Old Testament</div>
+                        <div class="poem-subtitle">Most Frequent (No Stop Words)</div>
+                        <div class="poem-content small-text" style="text-align: left; font-size: 1em;">
+                            <div class="poem-line">
+                                <strong>1. JEHOVAH</strong> (6,528)<br>
+                                <strong>2. ISRAEL</strong> (2,507)<br>
+                                <strong>3. KING</strong> (2,233)<br>
+                                <strong>4. GOD</strong> (2,153)<br>
+                                <strong>5. LORD</strong> (1,233)<br>
+                                <strong>6. HOUSE</strong> (1,903)<br>
+                                <strong>7. LAND</strong> (1,631)<br>
+                                <strong>8. CHILDREN</strong> (1,572)<br>
+                                <strong>9. MAN</strong> (1,518)<br>
+                                <strong>10. PEOPLE</strong> (1,460)<br>
+                                <strong>11. SAITH</strong> (1,301)<br>
+                                <strong>12. DAVID</strong> (1,088)<br>
+                                <strong>13. SONS</strong> (1,087)<br>
+                                <strong>14. MOSES</strong> (766)<br>
+                                <strong>15. JERUSALEM</strong> (737)
+                            </div>
+                        </div>
+                    </div>
+
+                    <div>
+                        <div class="poem-title" style="font-size: 1.4em;">New Testament</div>
+                        <div class="poem-subtitle">Most Frequent (No Stop Words)</div>
+                        <div class="poem-content small-text" style="text-align: left; font-size: 1em;">
+                            <div class="poem-line">
+                                <strong>1. GOD</strong> (1,923)<br>
+                                <strong>2. JESUS</strong> (973)<br>
+                                <strong>3. LORD</strong> (705)<br>
+                                <strong>4. CHRIST</strong> (555)<br>
+                                <strong>5. THINGS</strong> (514)<br>
+                                <strong>6. MAN</strong> (498)<br>
+                                <strong>7. FATHER</strong> (414)<br>
+                                <strong>8. SPIRIT</strong> (383)<br>
+                                <strong>9. PAUL</strong> (158)<br>
+                                <strong>10. BRETHREN</strong> (135)<br>
+                                <strong>11. FAITH</strong> (248)<br>
+                                <strong>12. WORKS</strong> (165)<br>
+                                <strong>13. RIGHTEOUSNESS</strong> (177)<br>
+                                <strong>14. KINGDOM</strong> (159)<br>
+                                <strong>15. DISCIPLES</strong> (244)
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div style="text-align: center; margin-top: 30px; padding-top: 20px; border-top: 2px solid var(--primary-gold); color: var(--text-secondary);">
+                    <strong style="color: var(--primary-gold);">Key Observation:</strong>
+                    OT focuses on JEHOVAH, ISRAEL, KING, LAW | NT focuses on JESUS, CHRIST, SPIRIT, FAITH
+                </div>
+            </div>
+        </div>
+
+        <footer>
+            <p><strong>Data Source:</strong> American Standard Version (ASV), 1901 - 31,102 verses</p>
+            <p style="margin-top: 10px;">
+                <a href="index.html">Main Visualizer</a> |
+                <a href="about.html">About</a> |
+                <a href="quirk.html">The Story</a> |
+                <a href="https://github.com/Ringmast4r">@Ringmast4r</a>
+            </p>
+            <p style="margin-top: 15px; font-size: 0.9em; color: var(--text-secondary);">
+                📖 These "poems" are purely data-driven - no human curation. The patterns emerge naturally from word frequency.
+            </p>
+        </footer>
+    </div>
+
+    <script>
+        const tabButtons = document.querySelectorAll('.tab-button');
+        const tabContents = document.querySelectorAll('.tab-content');
+
+        tabButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                const tabName = button.dataset.tab;
+                tabButtons.forEach(btn => btn.classList.remove('active'));
+                button.classList.add('active');
+                tabContents.forEach(content => content.classList.remove('active'));
+                document.getElementById(tabName).classList.add('active');
+            });
+        });
+    </script>
+</body>
+</html>

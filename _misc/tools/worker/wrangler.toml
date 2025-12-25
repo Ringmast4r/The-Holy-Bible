@@ -1,0 +1,7 @@
+name = "bible-api"
+main = "index.js"
+compatibility_date = "2025-10-12"
+
+[[r2_buckets]]
+binding = "BIBLE_DATA"
+bucket_name = "bible-cross-reference-data"

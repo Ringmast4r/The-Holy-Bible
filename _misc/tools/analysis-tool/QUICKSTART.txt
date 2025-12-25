@@ -1,0 +1,70 @@
+╔═══════════════════════════════════════════════════════════╗
+║          Bible Analysis Tool - Quick Start Guide         ║
+╚═══════════════════════════════════════════════════════════╝
+
+HOW TO RUN:
+───────────
+
+Option 1 (Easiest):
+  → Double-click "bible.bat" in this folder
+
+Option 2 (Command Line):
+  → Open Command Prompt (cmd)
+  → Type: cd C:\Users\Squir\Desktop\bible-cmd-reader
+  → Type: python bible_reader.py
+
+
+WHAT YOU CAN DO:
+────────────────
+
+1. Read Any Verse:
+   Just type:  John 3:16
+           or: Genesis 1:1
+           or: Psalms 23:1
+
+2. Read Entire Chapters:
+   Just type:  Psalms 23
+           or: Genesis 1
+           or: John 3
+
+3. Search for Keywords:
+   Just type:  love
+           or: faith
+           or: salvation
+           or: grace
+
+
+EXAMPLE SESSION:
+────────────────
+
+Enter your choice: John 3:16
+→ Shows the verse with 5 related cross-references
+
+Enter your choice: Psalms 23
+→ Shows the entire chapter beautifully formatted
+
+Enter your choice: grace
+→ Finds all verses containing "grace"
+
+Enter your choice: q
+→ Exits the program
+
+
+TIPS:
+─────
+• Cross-references show you related verses automatically
+• Keywords are highlighted in search results
+• Words in [brackets] are supplied words from translation
+• Type 'q' or 'quit' to exit
+
+
+DATA:
+─────
+• 31,102 verses (King James Version)
+• 340,000+ cross-references
+• 29,364 verses with cross-reference connections
+
+
+May God bless your study of His Word!
+
+═══════════════════════════════════════════════════════════
